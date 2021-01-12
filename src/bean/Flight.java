@@ -6,27 +6,17 @@ public class Flight {
     private String destinationAirPort;//到达城市
     private String depattureTime;//出发日期
     private String planeType;//飞机型号
-    private String seatNo;//座位号
-    private String totalSeatNum;//航班总座位数
+    private String currenSeatSeatNum;//航班总座位数
 
     void customerSet(Flight flight) {
-
-    }
-
-    public String getSeatNo() {
-        return seatNo;
-    }
-
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
     }
 
     public String getTotalSeatNum() {
-        return totalSeatNum;
+        return currenSeatSeatNum;
     }
 
     public void setTotalSeatNum(String totalSeatNum) {
-        this.totalSeatNum = totalSeatNum;
+        this.currenSeatSeatNum = totalSeatNum;
     }
 
     public String getId() {
@@ -69,13 +59,6 @@ public class Flight {
         this.planeType = planeType;
     }
 
-    public String getSeatNumber() {
-        return seatNo;
-    }
-
-    public void setSeatNumber(String seatNumber) {
-        this.seatNo = seatNumber;
-    }
 
 
 }
