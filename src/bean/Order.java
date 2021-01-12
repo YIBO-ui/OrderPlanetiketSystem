@@ -1,6 +1,7 @@
 package bean;
 
 import java.sql.Date;
+import java.util.Set;
 
 public class Order {
     private String id;//没有业务意义
@@ -11,6 +12,8 @@ public class Order {
     private float jptgx;//机票退改险
     private float yhj;//优惠券
     private float hszj;//含税总价
+    private Set<Customer> customerSet;
+    private Flight flight;
 
     public String getId() {
         return id;

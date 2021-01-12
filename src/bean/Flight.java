@@ -1,7 +1,5 @@
 package bean;
 
-import java.util.Set;
-
 public class Flight {
     private String id;//没有业务意义
     private String departureAirPort;//出发城市
@@ -11,8 +9,8 @@ public class Flight {
     private String seatNo;//座位号
     private String totalSeatNum;//航班总座位数
 
-    Set<Customer> customerSet(Flight flight) {
-        return null;
+    void customerSet(Flight flight) {
+
     }
 
     public String getSeatNo() {
