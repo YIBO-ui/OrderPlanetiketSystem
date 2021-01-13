@@ -2,14 +2,19 @@ package bll.impl;
 
 import bean.Flight;
 import bll.IFlightService;
+import dao.IFlightDao;
+import dao.impl.FlightDaoIml;
 
+import java.sql.SQLException;
 import java.util.Set;
 
-public class IFlightServiceImpl implements IFlightService {
+public class FlightServiceImpl implements IFlightService {
+    IFlightDao iFlightDao;
 
+     public FlightServiceImpl(){
+     }
     @Override
-    public void insertFlight(Flight flight) {
-
+    public void insertFlight(Flight flight){
     }
 
     @Override
@@ -36,4 +41,5 @@ public class IFlightServiceImpl implements IFlightService {
     public void updateFlight(Flight flight) {
 
     }
+
 }
