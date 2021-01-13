@@ -1,12 +1,11 @@
 package ui;
-
-
 import bean.Flight;
 import bll.IFlightService;
 import bll.impl.FlightServiceImpl;
-
+import com.sun.xml.internal.ws.server.sei.SEIInvokerTube;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,23 +23,22 @@ public class MainUI {
             System.out.println("按4，机票预订");
             System.out.println("按5，机票退订");
 
-            String id = UUID.randomUUID().toString();
-
             int choice = sc.nextInt();
+
             if (choice == 1) {
+                String id = UUID.randomUUID().toString().replace("-","");
                 System.out.println("请输入航班编号：");
                 String flightId = sc.next();
                 System.out.println("请输入机型：");
                 String planeType = sc.next();
                 System.out.println("请输入座位数：");
-                String currenSeatSeatNum = sc.next();
+                int currenSeatSeatNum = sc.nextInt();
                 System.out.println("请输入起飞机场：");
                 String departureAirPort = sc.next();
                 System.out.println("请输入目的机场：");
                 String destinationAirPort = sc.next();
                 System.out.println("请输入起飞时间：");
                 String depattureTime = sc.next();
-
 
                 Flight flight = new Flight(id, flightId, planeType, currenSeatSeatNum,
                         departureAirPort, destinationAirPort, depattureTime);
@@ -65,6 +63,13 @@ public class MainUI {
                             System.out.println("NO MATCH");
                         }
                     }
+                }
+            }else if (choice==2){
+                IFlightService iFlightService=new FlightServiceImpl();
+                try {
+                    Set<Flight> allFlight=iFlightService.getAllFlights();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }
         }

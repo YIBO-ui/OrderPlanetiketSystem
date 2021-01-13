@@ -9,17 +9,19 @@ import java.sql.SQLException;
 import java.util.Set;
 
 public class FlightServiceImpl implements IFlightService {
+
     IFlightDao iFlightDao;
 
-     public FlightServiceImpl(){
-     }
+     public FlightServiceImpl(){ iFlightDao=new FlightDaoIml();}
+
     @Override
-    public void insertFlight(Flight flight){
+    public void insertFlight(Flight flight) throws SQLException{
+         iFlightDao.insertFlight(flight);
     }
 
     @Override
-    public Set<Flight> getAllFlights() {
-        return null;
+    public Set<Flight> getAllFlights() throws SQLException{
+        return iFlightDao.getAllFlights();
     }
 
     @Override
