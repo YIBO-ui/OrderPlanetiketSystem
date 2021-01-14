@@ -9,12 +9,24 @@ public class Flight {
     private String destinationAirPort;//到达机场
     private String depattureTime;//出发日期
 
+    public Flight(String flightId, String planeType,
+                  int currenSeatNum, String departureAirPort,
+                  String destinationAirPort, String depattureTime) {
+        this.filghtId = filghtId;
+        this.planeType = planeType;
+        this.currenSeatNum = currenSeatNum;
+        this.departureAirPort = departureAirPort;
+        this.destinationAirPort = destinationAirPort;
+        this.depattureTime = depattureTime;
+    }
+
     void customerSet(Flight flight) {
     }
     //构造方法
 
     public Flight(String id, String filghtId, String planeType,
-                  int currenSeatNum, String departureAirPort, String destinationAirPort, String depattureTime) {
+                  int currenSeatNum, String departureAirPort,
+                  String destinationAirPort, String depattureTime) {
         this.id = id;
         this.filghtId = filghtId;
         this.planeType = planeType;
@@ -34,7 +46,7 @@ public class Flight {
                 ", 出发城市='" + departureAirPort + '\'' +
                 ", 目的城市='" + destinationAirPort + '\'' +
                 ", 出发时间='" + depattureTime + '\'' +
-                '}';
+                '}'+"\n";
     }
 
     public String getId() {

@@ -26,7 +26,7 @@ public class MainUI {
             int choice = sc.nextInt();
 
             if (choice == 1) {
-                String id = UUID.randomUUID().toString().replace("-","");
+                String id = UUID.randomUUID().toString().replace("-", "");
                 System.out.println("请输入航班编号：");
                 String flightId = sc.next();
                 System.out.println("请输入机型：");
@@ -42,11 +42,13 @@ public class MainUI {
 
                 Flight flight = new Flight(id, flightId, planeType, currenSeatSeatNum,
                         departureAirPort, destinationAirPort, depattureTime);
+
                 IFlightService iFlightService = new FlightServiceImpl();
                 try {
                     iFlightService.insertFlight(flight);
                 } catch (SQLException e) {
                     String errorMessage = e.getMessage();
+                    System.out.println(errorMessage);
                     if (errorMessage.startsWith("ORA-12899")) {
                         //ORA-12899: value too large for column "OPTS"."FLIGHT"."ID" (actual: 32, maximum: 30)
                         // 按指定模式在字符串查找
@@ -64,12 +66,39 @@ public class MainUI {
                         }
                     }
                 }
-            }else if (choice==2){
-                IFlightService iFlightService=new FlightServiceImpl();
+            } else if (choice == 2) {
+                IFlightService iFlightService = new FlightServiceImpl();
                 try {
-                    Set<Flight> allFlight=iFlightService.getAllFlights();
+                    Set<Flight> allFlight = iFlightService.getAllFlights();
+                    //set遍历用迭代器
+                    for (Flight flight : allFlight) {
+                        System.out.println(flight);
+                    }
                 } catch (SQLException e) {
                     e.printStackTrace();
+                }
+            } else if (choice == 3) {
+                System.out.println("请输入相应的数字选择您要查询的方式：");
+                System.out.println("按1，按起飞时间查询");
+                System.out.println("按2，按空座信息查询");
+                System.out.println("按3，按起飞地查询");
+                System.out.println("按4，按目的地查询");
+                int chooce = sc.nextInt();
+                if (chooce == 1) {
+                    System.out.println("请输入起飞时间：");
+                    String departureTime = sc.next();
+                    IFlightService iFlightService = new FlightServiceImpl();
+                    Flight flight= null;
+                    try {
+                        flight = iFlightService.getFlightByDepartureTime(departureTime);
+                        if (flight!=null){
+                            System.out.println("查询结果" + flight);
+                        }else{
+                            System.out.println("没有查询到该时间的航班");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
