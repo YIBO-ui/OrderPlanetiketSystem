@@ -12,5 +12,5 @@ public interface IFlightDao {
     Flight getFlightByDepartureAirPot(String departureAirPot);
     Flight getFlightByDestinationAirPot(String destinationAirPot);
     Flight getFlightByDepartureAirPort(String DepartureAirPort);
-    void updateFlight(Flight flight);//座位信息更新+
+    void updateFlight(Flight flight);//座位信息更新
 }

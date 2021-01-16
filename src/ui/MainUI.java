@@ -22,6 +22,7 @@ public class MainUI {
             System.out.println("按3，查询航班信息");
             System.out.println("按4，机票预订");
             System.out.println("按5，机票退订");
+            System.out.println("按6，退出系统");
 
             int choice = sc.nextInt();
 
@@ -32,16 +33,16 @@ public class MainUI {
                 System.out.println("请输入机型：");
                 String planeType = sc.next();
                 System.out.println("请输入座位数：");
-                int currenSeatSeatNum = sc.nextInt();
+                int currentSeatSeatNum = sc.nextInt();
                 System.out.println("请输入起飞机场：");
                 String departureAirPort = sc.next();
                 System.out.println("请输入目的机场：");
                 String destinationAirPort = sc.next();
                 System.out.println("请输入起飞时间：");
-                String depattureTime = sc.next();
+                String departureTime = sc.next();
 
-                Flight flight = new Flight(id, flightId, planeType, currenSeatSeatNum,
-                        departureAirPort, destinationAirPort, depattureTime);
+                Flight flight = new Flight(id, flightId, planeType, currentSeatSeatNum,
+                        departureAirPort, destinationAirPort, departureTime);
 
                 IFlightService iFlightService = new FlightServiceImpl();
                 try {
@@ -71,7 +72,7 @@ public class MainUI {
                 try {
                     Set<Flight> allFlight = iFlightService.getAllFlights();
                     //set遍历用迭代器
-                    for (Flight flight : allFlight) {
+                    for (Flight flight:allFlight) {
                         System.out.println(flight);
                     }
                 } catch (SQLException e) {
@@ -83,16 +84,15 @@ public class MainUI {
                 System.out.println("按2，按空座信息查询");
                 System.out.println("按3，按起飞地查询");
                 System.out.println("按4，按目的地查询");
-                int chooce = sc.nextInt();
-                if (chooce == 1) {
+                int choice1 = sc.nextInt();
+                if (choice1 == 1) {
                     System.out.println("请输入起飞时间：");
                     String departureTime = sc.next();
                     IFlightService iFlightService = new FlightServiceImpl();
-                    Flight flight= null;
                     try {
-                        flight = iFlightService.getFlightByDepartureTime(departureTime);
+                        Flight flight = iFlightService.getFlightByDepartureTime(departureTime);
                         if (flight!=null){
-                            System.out.println("查询结果" + flight);
+                            System.out.println("查询结果:\n" + flight);
                         }else{
                             System.out.println("没有查询到该时间的航班");
                         }

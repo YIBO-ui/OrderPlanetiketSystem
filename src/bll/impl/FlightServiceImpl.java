@@ -39,10 +39,6 @@ public class FlightServiceImpl implements IFlightService {
         return null;
     }
 
-    @Override
-    public Flight getFlightByDepartureAirPort(String DepartureAirPort) {
-        return null;
-    }
 
     @Override
     public void updateFlight(Flight flight) {

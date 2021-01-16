@@ -11,7 +11,6 @@ public interface IFlightService {
     Flight getFlightByDepartureTime(String departureTime) throws SQLException;
     Flight getFlightByDepartureAirPot(String departureAirPot);
     Flight getFlightByDestinationAirPot(String destinationAirPot);
-    Flight getFlightByDepartureAirPort(String DepartureAirPort);
     void updateFlight(Flight flight);
 
 
